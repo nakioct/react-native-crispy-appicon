@@ -1,0 +1,27 @@
+{
+    "name": "react-native-crispy-appicon",
+    "version": "1.0.3",
+    "description": "this is designed for crispy",
+    "homepage": "https://github.com/nakioct/react-native-crispy-appicon",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "react-native-crispy-appicon"
+    ],
+    "author": {
+        "name": "nakioct",
+        "email": "nakioct@example.com"
+    },
+    "license": "MIT",   
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/nakioct/react-native-crispy-appicon.git"
+    },
+    "peerDependencies": {
+        "react": "*",
+        "react-native": "*"
+    }
+  }
+  
