@@ -25,19 +25,22 @@ RCT_EXPORT_METHOD(callAppIconArrayWithCallBack:(RCTResponseSenderBlock)callBlock
 }
 
 RCT_EXPORT_METHOD(calliOSAction:(NSString *)iconName callBlock:(RCTResponseSenderBlock)callBlock){
-  if (![[UIApplication sharedApplication] supportsAlternateIcons]) {
-      return;
-  }
-  if ([iconName isEqualToString:@""]) {
-      iconName = nil;
-  }
-  [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
-      if (error) {
-        callBlock(@[@"AppIcon Changed Fail",@"2"]);
-      }else{
-        callBlock(@[@"AppIcon Changed Success",@"1"]);
-      }
-  }];
+    __block NSString *tempIconName =  iconName;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (![[UIApplication sharedApplication] supportsAlternateIcons]) {
+            return;
+        }
+        if ([tempIconName isEqualToString:@""]) {
+            tempIconName = nil;
+        }
+        [[UIApplication sharedApplication] setAlternateIconName:tempIconName completionHandler:^(NSError * _Nullable error) {
+            if (error) {
+              callBlock(@[@"AppIcon Changed Fail",@"2"]);
+            }else{
+              callBlock(@[@"AppIcon Changed Success",@"1"]);
+            }
+        }];
+    });
 }
 
 
